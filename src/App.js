@@ -1,6 +1,12 @@
 import "./App.css";
 
-import img from "./img/jauge_sleep.png";
+import courbe1 from "./img/courbe_mauve.png";
+import bol from "./img/bol_riz.png";
+import gratin from "./img/gratin.jpg";
+import lit from "./img/lit.png";
+import horloge from "./img/horloge.png";
+import courbe2 from "./img/courbe2.png";
+
 
 const user = {
   name: "Michel",
@@ -23,12 +29,14 @@ const user = {
     },
   ],
 };
+const todayDate = new Date();
+const today = todayDate.toLocaleDateString('en-GB');
 
 const Card = (props) => {
   return (
     <div>
       <p className="font-bold text-left pl-2 w-full ">{props.title}</p>
-      <div className="bg-blue-200 flex flex-col justify-center items-center p-2 m-2 rounded-3xl text-xs">
+      <div className="bg-white flex flex-col justify-center items-center p-2 m-2 rounded-lg text-xs">
         <p className="text-left pl-4 w-full text-base">{props.subtitle}</p>
         {props.children}
       </div>
@@ -37,18 +45,65 @@ const Card = (props) => {
 };
 function App() {
   return (
-    <div className="flex items-center flex-col w-full">
-      <header className="flex justify-between w-full text-center font-bold text-xl mb-4">
-        <div>Let's the healthy life begin</div>
-        <div className="font-light">Hello {user.name}</div>
+    <div className="flex items-center flex-col w-full bg-red-100">
+      <header className="flow-root w-full text-center font-bold text-xl mb-4">
+        <div>{user.name}'s Dashboard Overview</div>
+        <div className="font-light">{today}</div>
       </header>
-      <main className="grid grid-cols-2 gap-4">
-        <div>
-          <Card title="Sleep quality and time to bed">
-            <img src={img} />
+      {/* <main className="grid grid-cols-3 gap-4"> */}
+      {/* <main className="grid grid-cols-3 "> */}
+      <main>
+        <div className="inline-flex space-x-6">
+          <Card>
+            <div className="grid grid-cols-3 p-2">
+              <div className="bg-yellow-200 p-2 m-2 rounded-lg text-xs">
+                <img src={bol} width="30px" />
+              </div>
+              
+              <h1>food suggestions </h1>
+              </div>
+              <div className="p-5">
+              <img src={gratin} width="100px" />
+              </div>
           </Card>
-          <Card>graphique sur la semaine</Card>
+          <Card>
+            <div className="flex justify-around p-2">
+              <div className="bg-purple-200 p-2 m-2 rounded-lg text-xs">
+                <img src={lit} width="30" />
+              </div>
+              <h1>Sleep quality</h1>
+            </div>
+            <div>
+              76% Average
+            </div>
+            <div className="bg-purple-200 p-2 m-2 rounded-lg text-xs">
+              ↑ From last week
+            </div>
+            <div>
+              <img src={courbe1} width="175px" />
+            </div>
+          </Card>
+          <Card>
+            <div className="grid grid-cols-3 p-2">
+              <div className="bg-green-300 p-2 m-2 rounded-lg text-xs">
+                <img src={horloge} width="35px" />
+              </div>
+              <h1>Time to bed</h1>
+            </div>
+            <div>
+              11pm Average
+            </div>
+            <div className="bg-green-300 p-2 m-2 rounded-lg text-xs">
+             ↓ From last week 
+            </div>
+            <div>
+              <img src={courbe2} width="150px" />
+            </div>
+          </Card>
         </div>
+        
+          
+        
         <div>
           <Card title="No pain, no gain">
             <>
